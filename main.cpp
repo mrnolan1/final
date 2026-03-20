@@ -1,7 +1,5 @@
-#include <iostream>
-
+//this will be for the main file
 int main()
 {
-    std::cout << "Hello\n";
-    return 0;
+   
 }
