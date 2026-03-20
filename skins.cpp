@@ -1,0 +1,1 @@
+//this will be for the play class(its own seperate functions for handling inputs, rendering, and updating screen for the skin selection screen)
