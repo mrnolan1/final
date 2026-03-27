@@ -24,41 +24,50 @@ runTest: exe/test
 
 
 
-exe/game: obj/main.o obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/menu.o obj/skins.o
+exe/game: obj/main.o obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/menu.o obj/skins.o | exe
 	$(CC) $(FLAGS) $^ -o $@
 
 
-exe/test: obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/menu.o obj/skins.o obj/test.o
+exe/test: obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/menu.o obj/skins.o obj/test.o | exe
 	$(CC) $(FLAGS) $^ -o $@
 
 
 
-obj/main.o: src/main.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/main.hpp hdr/skins.hpp
+obj/main.o: src/main.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/main.hpp hdr/skins.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/button.o: src/button.cpp hdr/button.hpp
+obj/button.o: src/button.cpp hdr/button.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/character.o: src/character.cpp hdr/character.hpp
+obj/character.o: src/character.cpp hdr/character.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/game.o: src/game.cpp hdr/game.hpp
+obj/game.o: src/game.cpp hdr/game.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/howtoplay.o: src/howtoplay.cpp hdr/howtoplay.hpp
+obj/howtoplay.o: src/howtoplay.cpp hdr/howtoplay.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/obstacle.o: src/obstacle.cpp hdr/obstacle.hpp
+obj/obstacle.o: src/obstacle.cpp hdr/obstacle.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/play.o: src/play.cpp hdr/play.hpp
+obj/play.o: src/play.cpp hdr/play.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/menu.o: src/screen.cpp hdr/menu.hpp
+obj/menu.o: src/menu.cpp hdr/menu.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/skins.o: src/skins.cpp hdr/skins.hpp
+obj/skins.o: src/skins.cpp hdr/skins.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/test.o: src/test.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/menu.hpp hdr/skins.hpp
+obj/test.o: src/test.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/menu.hpp hdr/skins.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
+
+
+
+
+obj:
+	mkdir -p obj
+
+exe:
+	mkdir -p exe
