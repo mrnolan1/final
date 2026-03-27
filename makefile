@@ -24,16 +24,16 @@ runTest: exe/test
 
 
 
-exe/game: obj/main.o obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/screen.o obj/skins.o
+exe/game: obj/main.o obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/menu.o obj/skins.o
 	$(CC) $(FLAGS) $^ -o $@
 
 
-exe/test: obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/screen.o obj/skins.o obj/test.o
+exe/test: obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/menu.o obj/skins.o obj/test.o
 	$(CC) $(FLAGS) $^ -o $@
 
 
 
-obj/main.o: src/main.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/screen.hpp hdr/skins.hpp
+obj/main.o: src/main.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/main.hpp hdr/skins.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 obj/button.o: src/button.cpp hdr/button.hpp
@@ -54,11 +54,11 @@ obj/obstacle.o: src/obstacle.cpp hdr/obstacle.hpp
 obj/play.o: src/play.cpp hdr/play.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/screen.o: src/screen.cpp hdr/screen.hpp
+obj/menu.o: src/screen.cpp hdr/menu.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 obj/skins.o: src/skins.cpp hdr/skins.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/test.o: src/test.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/screen.hpp hdr/skins.hpp
+obj/test.o: src/test.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/menu.hpp hdr/skins.hpp
 	$(CC) $(FLAGS) -c $< -o $@
